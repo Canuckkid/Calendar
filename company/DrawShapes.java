@@ -2,6 +2,7 @@ package com.company;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
 import java.awt.geom.RoundRectangle2D;
+import java.time.YearMonth;
 import java.util.Calendar;
 import java.awt.*;
 
@@ -25,12 +26,36 @@ public class DrawShapes extends JFrame {
                Graphics2D g2 = (Graphics2D) g;
                Shape rect = new Rectangle(0, 0, 588, 84);
                g2.draw(rect);
+               Calendar c = Calendar.getInstance();
+               c.set(2019, Calendar.JUNE, 1);
+
+               int counter = 0;
+               int dayofweek = c.get(c.DAY_OF_WEEK);
+               YearMonth yearmonthobject = YearMonth.of(c.get(c.YEAR), c.get(c.MONTH) + 1);
+
+               int numberofdays = yearmonthobject.lengthOfMonth();
+
+               System.out.print(c.get(c.YEAR));
+
+               for (int i = dayofweek-1; i < 7; i++)
+               {
+                   counter++;
+                   g2.drawString(String.valueOf(counter), i * 84 + 3, 168);
+               }
+
                for (int i = 0; i < 6; i++)
                {
+                   for (int a = 0; a < 7; a++) {
+                       rect = new Rectangle(a * 84, 84 * (i + 1), 84, 84);
+                       g2.draw(rect);
+                   }
                    for (int a = 0; a < 7; a++)
                    {
-                      rect = new Rectangle(a*84, 84*(i+1), 84, 84);
-                      g2.draw(rect);
+                       if (counter < numberofdays)
+                       {
+                           counter++;
+                           g2.drawString(String.valueOf(counter), a * 84 + 3, 84 * (i + 3));
+                       }
                    }
                }
            }
