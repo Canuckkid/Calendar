@@ -46,7 +46,7 @@ public class eventtable{
     {
         try {
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-            Connection connection = DriverManager.getConnection("jdbc:ucanaccess://C:/Users/julie/Documents/Database Skeleton_V3.accdb");
+            Connection connection = DriverManager.getConnection("jdbc:ucanaccess://PATH");
             System.out.println("Connected Successfully");
 
             //Using sql select query
