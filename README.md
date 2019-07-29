@@ -4,6 +4,6 @@ Calendar with notifications for any upcoming IPOs. Connects to an access databas
 ## 1. Edit path to access database
 Change PATH to actual path
 
-'''java
+```java
  Connection connection = DriverManager.getConnection("jdbc:ucanaccess://PATH")
-'''
+```
